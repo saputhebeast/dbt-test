@@ -9,4 +9,4 @@ select
     productid as product_id,
     cast(ordercostprice as numeric) as order_cost_price,
     cast(ordersellingprice as numeric) as order_selling_price
-from {{ ref("orders") }}
+from {{ source("raw", "orders") }}
