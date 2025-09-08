@@ -6,4 +6,4 @@ select
     segment as customer_segment,
     country as country,
     state as state
-from {{ ref("customers") }}
+FROM {{ source('raw', 'customers') }}

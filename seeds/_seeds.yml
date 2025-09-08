@@ -6,7 +6,9 @@ seeds:
     columns:
       - name: CustomerID
         description: "Unique customer identifier."
-        tests: [not_null, unique]
+        tests:
+          - not_null: {}
+          - unique: {}
       - name: CustomerName
       - name: Segment
       - name: Country
@@ -16,7 +18,9 @@ seeds:
     description: "Product master loaded from seed CSV."
     columns:
       - name: ProductID
-        tests: [not_null, unique]
+        tests:
+          - not_null: {}
+          - unique: {}
       - name: ProductName
       - name: Category
       - name: SubCategory
@@ -25,17 +29,21 @@ seeds:
     description: "Orders loaded directly from seed CSV (dates kept as STRING)."
     columns:
       - name: OrderID
-        tests: [not_null, unique]
+        tests:
+          - not_null: {}
+          - unique: {}
       - name: CustomerID
         tests:
           - relationships:
-              to: ref('customers')
-              field: CustomerID
+              arguments:
+                to: ref('customers')
+                field: CustomerID
       - name: ProductID
         tests:
           - relationships:
-              to: ref('product')
-              field: ProductID
+              arguments:
+                to: ref('product')
+                field: ProductID
       - name: OrderDate
       - name: ShipDate
       - name: OrderCostPrice

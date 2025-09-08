@@ -16,7 +16,7 @@ select
     p.sub_category,
     o.order_cost_price,
     o.order_selling_price,
-    (o.order_selling_price - o.order_cost_price) as profit
+    {{ calculate_profit("o.order_cost_price", "o.order_selling_price") }} as profit
 from {{ ref("stg_orders") }} as o
 left join {{ ref("stg_customers") }} as c on o.customer_id = c.customer_id
 left join {{ ref("stg_product") }} as p on o.product_id = p.product_id

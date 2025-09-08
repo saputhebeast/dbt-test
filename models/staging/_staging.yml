@@ -5,17 +5,21 @@ models:
     description: "Cleaned and typed orders data."
     columns:
       - name: order_id
-        tests: [not_null, unique]
+        tests:
+          - not_null: {}
+          - unique: {}
       - name: customer_id
         tests:
           - relationships:
-              to: ref('stg_customers')
-              field: customer_id
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
       - name: product_id
         tests:
           - relationships:
-              to: ref('stg_product')
-              field: product_id
+              arguments:
+                to: ref('stg_product')
+                field: product_id
 
   - name: stg_customers
     description: "Customer master data."

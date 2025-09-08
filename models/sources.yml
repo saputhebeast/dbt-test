@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    database: tough-zoo-471416-r4
+    schema: dbt_swijekoon
+    tables:
+      - name: customers
+      - name: orders
+      - name: product
